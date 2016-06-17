@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 # Import views from current directory
 from . import views
@@ -24,3 +25,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home),
 ]
+
+# If in debug (dev) mode, staticfiles_urlpatterns() will return all
+# paths to static assets described in settings/STATICFILES_DIRS
+urlpatterns += staticfiles_urlpatterns()
